@@ -5,19 +5,19 @@ import java.util.List;
 
 import fr.jaroddeveloppement.mareu.model.Meeting;
 import fr.jaroddeveloppement.mareu.model.Room;
-import fr.jaroddeveloppement.mareu.model.Utilisateur;
+import fr.jaroddeveloppement.mareu.model.Users;
 
 public class DummyApiService implements ApiService {
 
 
-    private List<Utilisateur> user = DummyUtilisateurGenerator.DUMMY_UTILISATEUR;
+    private List<Users> user = DummyUtilisateurGenerator.dummyUsers;
     private List<Room> meetingRoom = DummySalleGenerator.DUMMY_SALLE;
     private List<Meeting> meetings = new ArrayList<>();
 
 
 
     @Override
-    public List<Utilisateur> getUser() {
+    public List<Users> getUser() {
         return user;
     }
 

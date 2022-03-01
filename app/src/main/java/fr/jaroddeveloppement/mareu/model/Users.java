@@ -1,6 +1,6 @@
 package fr.jaroddeveloppement.mareu.model;
 
-public class Utilisateur {
+public class Users {
 
 
    private String name;
@@ -15,7 +15,7 @@ public class Utilisateur {
      * @param department
      * @param mail
      */
-    public Utilisateur(String name, String firstname, String department, String mail) {
+    public Users(String name, String firstname, String department, String mail) {
         this.name = name;
         this.firstname = firstname;
         this.department = department;

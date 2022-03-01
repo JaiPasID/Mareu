@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import fr.jaroddeveloppement.mareu.model.Utilisateur;
+import fr.jaroddeveloppement.mareu.model.Users;
 
 
-// pourquoi faire une class abstract?
-public  class DummyUtilisateurGenerator {
 
-  public static List<Utilisateur> DUMMY_UTILISATEUR = Arrays.asList(
+public abstract class DummyUtilisateurGenerator {
 
-          new Utilisateur("Labiche", "Michael", "Vente", "m.labiche@lamzone.com"),
-          new Utilisateur("Lachevre", "Micehlle", "Comptabilité", "m.lachevre@lamzone.com"),
-          new Utilisateur("Lours", "Morgan", "Ressource Humaine", "m.lours@lamzone.com"),
-          new Utilisateur("Lapoule", "Micheline", "Marketing", "m.lapoule@lamzone.com"),
-          new Utilisateur("Lavie","Maurice", "CEO","m.lavie@lamzone.com")
+  public static List<Users> dummyUsers = Arrays.asList(
+
+          new Users("Labiche", "Michael", "Vente", "m.labiche@lamzone.com"),
+          new Users("Lachevre", "Micehlle", "Comptabilité", "m.lachevre@lamzone.com"),
+          new Users("Lours", "Morgan", "Ressource Humaine", "m.lours@lamzone.com"),
+          new Users("Lapoule", "Micheline", "Marketing", "m.lapoule@lamzone.com"),
+          new Users("Lavie","Maurice", "CEO","m.lavie@lamzone.com")
     );
 
-  static List<Utilisateur> ListUtilisateur() {return  new ArrayList<>(DUMMY_UTILISATEUR); }
+  static List<Users> listUser() {return  new ArrayList<>(dummyUsers); }
 
 }

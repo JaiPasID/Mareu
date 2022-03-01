@@ -23,6 +23,6 @@ public static List<Room> DUMMY_SALLE = Arrays.asList(
         new Room (10, "Salle du vendredi soir")
 );
 
-  static List<Room> ListSalle(){ return new ArrayList<>(DUMMY_SALLE);}
+  static List<Room> listSalle(){ return new ArrayList<>(DUMMY_SALLE);}
 
 }

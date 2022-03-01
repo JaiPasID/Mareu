@@ -4,12 +4,12 @@ import java.util.List;
 
 import fr.jaroddeveloppement.mareu.model.Meeting;
 import fr.jaroddeveloppement.mareu.model.Room;
-import fr.jaroddeveloppement.mareu.model.Utilisateur;
+import fr.jaroddeveloppement.mareu.model.Users;
 
 public interface ApiService {
 
 
-    List <Utilisateur> getUser();
+    List <Users> getUser();
     List <Room> getRoom();
     List <Meeting>getMeeting();
 

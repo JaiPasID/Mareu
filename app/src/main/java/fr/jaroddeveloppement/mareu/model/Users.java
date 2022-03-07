@@ -4,9 +4,9 @@ public class Users {
 
 
    private String name;
-   private String firstname;
-   private String department;
-   private String mail;
+    private String firstname;
+    private String department;
+    private String mail;
 
     /**
      * Constructor

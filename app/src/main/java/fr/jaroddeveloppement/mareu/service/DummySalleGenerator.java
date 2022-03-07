@@ -7,7 +7,7 @@ import java.util.List;
 import fr.jaroddeveloppement.mareu.model.Room;
 
 
-public  class DummySalleGenerator {
+public abstract class DummySalleGenerator {
 
 public static List<Room> DUMMY_SALLE = Arrays.asList(
 

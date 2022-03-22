@@ -1,6 +1,6 @@
 package fr.jaroddeveloppement.mareu.ui;
 
-import android.view.LayoutInflater;
+import  android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -9,12 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
+import fr.jaroddeveloppement.mareu.DeleteEvent;
 import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.model.Meeting;
 
 public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetingRecyclerViewAdapter.ViewHolder> {
+
+
 
     private final List<Meeting> mMeeting;
 
@@ -26,6 +31,7 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.gestion_list, parent, false);
 
@@ -39,8 +45,9 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
         holder.mTextView.setText(meeting.getMeetingSubject());
         holder.mImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View view) {
-                mMeeting.remove(meeting);
+                EventBus.getDefault().post(new DeleteEvent(meeting));
             }
         });
     }

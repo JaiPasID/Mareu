@@ -5,16 +5,30 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
+import java.util.List;
+
+import fr.jaroddeveloppement.mareu.DI;
+import fr.jaroddeveloppement.mareu.DeleteEvent;
 import fr.jaroddeveloppement.mareu.R;
+import fr.jaroddeveloppement.mareu.model.Meeting;
+import fr.jaroddeveloppement.mareu.service.ApiService;
 
 public class MainActivity extends AppCompatActivity {
 
-    Toolbar mToolbar;
+    private Toolbar mToolbar;
+    private RecyclerView mRecyclerView;
+    private List<Meeting> mMeeting;
+    private ApiService apiService;
 
 
     @Override
@@ -31,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.filterDate:
                 // todo faire le filtre du cas 1
             case R.id.filterRoom:
-                // todo faire le filtre du cas 1
+                // todo faire le filtre du cas 1 dialogue fragment
             case R.id.reset_filter:
                 // todo faire le filtre du cas 1
 
@@ -46,20 +60,50 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mToolbar = findViewById(R.id.namToolBar);
+        mRecyclerView = findViewById(R.id.recyclerView);
 
-
-
-
-
+        apiService = DI.getApiService();
 
         init();
+
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initList();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void onDeleteMeeting(DeleteEvent event) {
+
+        apiService.removeMetting(event.meeting);
+        initList();
+    }
 
     public void init(){
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Ma Réu");
-    }
 
+
+    }
+    public void initList() {
+
+        mMeeting = apiService.getMeeting();
+        mRecyclerView.setAdapter(new MyMeetingRecyclerViewAdapter(mMeeting));
+
+    }
 }

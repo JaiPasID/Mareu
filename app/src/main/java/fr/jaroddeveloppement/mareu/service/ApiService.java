@@ -21,4 +21,8 @@ public interface ApiService {
    /** Remove an appointment */
    void removeMetting(Meeting meeting);
 
+   List<Meeting>filterByRoom (Room room);
+   List<Meeting>filterByDate (String date);
+
+
 }

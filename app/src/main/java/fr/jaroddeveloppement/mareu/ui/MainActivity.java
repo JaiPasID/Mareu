@@ -2,7 +2,6 @@ package fr.jaroddeveloppement.mareu.ui;
 
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,15 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageButton;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
-import fr.jaroddeveloppement.mareu.DI;
-import fr.jaroddeveloppement.mareu.DeleteEvent;
+import fr.jaroddeveloppement.mareu.di.DI;
+import fr.jaroddeveloppement.mareu.event.DeleteEvent;
 import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.model.Meeting;
 import fr.jaroddeveloppement.mareu.service.ApiService;

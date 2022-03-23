@@ -1,4 +1,4 @@
-package fr.jaroddeveloppement.mareu;
+package fr.jaroddeveloppement.mareu.di;
 
 import fr.jaroddeveloppement.mareu.service.ApiService;
 import fr.jaroddeveloppement.mareu.service.DummyApiService;

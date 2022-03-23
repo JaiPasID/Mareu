@@ -13,7 +13,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
-import fr.jaroddeveloppement.mareu.DeleteEvent;
+import fr.jaroddeveloppement.mareu.event.DeleteEvent;
 import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.model.Meeting;
 

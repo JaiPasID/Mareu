@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import fr.jaroddeveloppement.mareu.DI;
+import fr.jaroddeveloppement.mareu.di.DI;
 import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.service.ApiService;
 

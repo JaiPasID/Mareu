@@ -1,4 +1,4 @@
-package fr.jaroddeveloppement.mareu;
+package fr.jaroddeveloppement.mareu.event;
 
 import fr.jaroddeveloppement.mareu.model.Meeting;
 

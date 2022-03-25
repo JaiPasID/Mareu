@@ -12,6 +12,21 @@ public class Meeting  {
    private String meetingSubject;
 
 
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 
     /**
      * Constructor

@@ -14,8 +14,9 @@ public class DummyApiService implements ApiService {
     private List<Room> meetingRoom = DummySalleGenerator.DUMMY_SALLE;
     private List<Meeting> meetings = new ArrayList<>();
 
-    private List<Meeting> dateMeeting = new ArrayList<>();
+    private List<Meeting> meetingsFilterByDate = new ArrayList<>();
     private List<Meeting> roomMeeting = new ArrayList<>();
+
 
 
 
@@ -48,14 +49,30 @@ public class DummyApiService implements ApiService {
 
     @Override
     public List<Meeting> filterByRoom(Room room) {
+
         //todo faire une boucle sur les meetings et recupérer les meeting qui ont la room = room en parametre
+
+        for (int i = 0 ; i <meetings.size(); i++){
+        Meeting element = meetings.get(i);
+        if (meetings.get(i).getRoom().getNomDeLaSalle().equals(room.getNomDeLaSalle())){
+            roomMeeting.add(meetings.get(i));
+        }
+        }
+
         return roomMeeting;
     }
 
     @Override
     public List<Meeting> filterByDate(String date) {
+
+        for (int i = 0 ; i < meetings.size(); ++i){
+            if (meetings.get(i).getDate().equals(date)){
+                meetingsFilterByDate.add(meetings.get(i));
+            }
+        }
         //todo faire une boucle sur les meetings et recupérer les meeting qui ont la date = date en parametre
-        return dateMeeting;
+
+        return meetingsFilterByDate;
     }
 
 

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -19,7 +20,9 @@ import fr.jaroddeveloppement.mareu.di.DI;
 import fr.jaroddeveloppement.mareu.event.DeleteEvent;
 import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.model.Meeting;
+import fr.jaroddeveloppement.mareu.model.Room;
 import fr.jaroddeveloppement.mareu.service.ApiService;
+import fr.jaroddeveloppement.mareu.service.DialogueFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private List<Meeting> mMeeting;
     private ApiService apiService;
+
+    private List<Meeting> roomMeeting;
+
 
 
     @Override
@@ -43,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.filterDate:
                 // todo faire le filtre du cas 1
             case R.id.filterRoom:
+
+                DialogueFragment roomsListFragment = new DialogueFragment();
+                roomsListFragment.show(getSupportFragmentManager(), "RoomsListFragment");
+
+
                 // todo faire le filtre du cas 1 dialogue fragment
             case R.id.reset_filter:
                 // todo faire le filtre du cas 1
@@ -102,6 +113,12 @@ public class MainActivity extends AppCompatActivity {
 
         mMeeting = apiService.getMeeting();
         mRecyclerView.setAdapter(new MyMeetingRecyclerViewAdapter(mMeeting));
+
+    }
+
+    public void InitFiltreRoom(){
+
+       // roomMeeting = apiService.filterByRoom(//manque les paramettre de room);
 
     }
 }

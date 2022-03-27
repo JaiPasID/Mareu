@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/recyclerView"
-    tools:listitem="@layout/gestion_list">
+    android:id="@+id/recyclerViewMeeting"
+    tools:listitem="@layout/activity_list_meetings">
 
 
 </androidx.recyclerview.widget.RecyclerView>

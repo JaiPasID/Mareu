@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -22,7 +21,7 @@ import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.model.Meeting;
 import fr.jaroddeveloppement.mareu.model.Room;
 import fr.jaroddeveloppement.mareu.service.ApiService;
-import fr.jaroddeveloppement.mareu.service.DialogueFragment;
+import fr.jaroddeveloppement.mareu.service.DialogFragmentListRoom;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private List<Meeting> mMeeting;
     private ApiService apiService;
+    private List<Room> mRoom;
 
-    private List<Meeting> roomMeeting;
+
 
 
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 // todo faire le filtre du cas 1
             case R.id.filterRoom:
 
-                DialogueFragment roomsListFragment = new DialogueFragment();
+                DialogFragmentListRoom roomsListFragment = new DialogFragmentListRoom();
                 roomsListFragment.show(getSupportFragmentManager(), "RoomsListFragment");
 
 
@@ -69,11 +69,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mToolbar = findViewById(R.id.namToolBar);
-        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView = findViewById(R.id.recyclerViewMeeting);
 
         apiService = DI.getApiService();
 
         init();
+
 
     }
 
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
         apiService.removeMetting(event.meeting);
         initList();
+        InitFilterRoom();
     }
 
     public void init(){
@@ -116,9 +118,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void InitFiltreRoom(){
+    public void InitFilterRoom(){
 
-       // roomMeeting = apiService.filterByRoom(//manque les paramettre de room);
+        mRoom = apiService.getRoom();
+        mRecyclerView.setAdapter(new MyRoomRecyclerViewAdapteur(mRoom));
+
 
     }
 }

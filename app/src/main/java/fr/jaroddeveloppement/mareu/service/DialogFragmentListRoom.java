@@ -4,12 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.recyclerview.widget.ListAdapter;
 
 import java.util.List;
 
@@ -18,9 +17,9 @@ import fr.jaroddeveloppement.mareu.di.DI;
 import fr.jaroddeveloppement.mareu.model.Room;
 
 
-public class DialogueFragment extends DialogFragment {
+public class DialogFragmentListRoom extends DialogFragment {
 
-    ListView mListeView;
+    TextView mRecycleurView;
     ApiService mApiService;
 
     @Nullable
@@ -31,9 +30,9 @@ public class DialogueFragment extends DialogFragment {
 
 
 
-         View rootView = inflater.inflate(R.layout.activity_dialog_fragment, container, false);
+         View rootView = inflater.inflate(R.layout.activity_dialog_fragment_list_room, container, false);
 
-        mListeView = rootView.findViewById(R.id.listeView);
+        mRecycleurView = rootView.findViewById(R.id.recycleurViewRoom);
 
         mApiService = DI.getApiService();
         List<Room> meetingRoomList = mApiService.getRoom();

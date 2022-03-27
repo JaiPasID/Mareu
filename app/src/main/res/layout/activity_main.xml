@@ -22,7 +22,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-<include layout="@layout/activity_recyclerview"></include>
+<include layout="@layout/activity_recyclerview_meeting"></include>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"

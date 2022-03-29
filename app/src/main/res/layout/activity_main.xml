@@ -22,9 +22,11 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-<include layout="@layout/activity_recyclerview_meeting"></include>
+<include layout="@layout/recyclerview_meeting"></include>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttonAddMeeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right|bottom"

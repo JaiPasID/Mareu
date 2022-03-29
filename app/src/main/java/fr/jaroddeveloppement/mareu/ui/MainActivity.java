@@ -1,27 +1,36 @@
 package fr.jaroddeveloppement.mareu.ui;
 
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
+import java.util.PrimitiveIterator;
 
 import fr.jaroddeveloppement.mareu.di.DI;
 import fr.jaroddeveloppement.mareu.event.DeleteEvent;
 import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.model.Meeting;
 import fr.jaroddeveloppement.mareu.model.Room;
+import fr.jaroddeveloppement.mareu.model.Users;
+import fr.jaroddeveloppement.mareu.adapteur.MyMeetingRecyclerViewAdapter;
+import fr.jaroddeveloppement.mareu.adapteur.MyRoomRecyclerViewAdapteur;
 import fr.jaroddeveloppement.mareu.service.ApiService;
-import fr.jaroddeveloppement.mareu.service.DialogFragmentListRoom;
+import fr.jaroddeveloppement.mareu.dialogFragment.DialogFragmentListRoom;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +39,14 @@ public class MainActivity extends AppCompatActivity {
     private List<Meeting> mMeeting;
     private ApiService apiService;
     private List<Room> mRoom;
+
+    private List<Users> mUsers;
+
+
+    private FloatingActionButton mAddMeeting;
+
+
+    private final int ACTIVITY_REQUEST_CODE = 40;
 
 
 
@@ -70,11 +87,24 @@ public class MainActivity extends AppCompatActivity {
 
         mToolbar = findViewById(R.id.namToolBar);
         mRecyclerView = findViewById(R.id.recyclerViewMeeting);
+        mAddMeeting = findViewById(R.id.buttonAddMeeting);
 
         apiService = DI.getApiService();
 
         init();
 
+
+
+        mAddMeeting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =  new Intent(MainActivity.this, AddMeetingActivity.class);
+                registerForActivityResult(intent, ACTIVITY_REQUEST_CODE);
+            }
+        });
+    }
+
+    private void registerForActivityResult(Intent intent, int activityRequestCode) {
 
     }
 
@@ -87,7 +117,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        initList();
+
+
     }
 
     @Override
@@ -100,8 +131,7 @@ public class MainActivity extends AppCompatActivity {
     public void onDeleteMeeting(DeleteEvent event) {
 
         apiService.removeMetting(event.meeting);
-        initList();
-        InitFilterRoom();
+
     }
 
     public void init(){
@@ -121,8 +151,10 @@ public class MainActivity extends AppCompatActivity {
     public void InitFilterRoom(){
 
         mRoom = apiService.getRoom();
-        mRecyclerView.setAdapter(new MyRoomRecyclerViewAdapteur(mRoom));
+       // mRecyclerView.setAdapter(new MyRoomRecyclerViewAdapter(mRoom));
 
 
     }
+
+
 }

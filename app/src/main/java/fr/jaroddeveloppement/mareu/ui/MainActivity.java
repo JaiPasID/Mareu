@@ -99,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent =  new Intent(MainActivity.this, AddMeetingActivity.class);
-                registerForActivityResult(intent, ACTIVITY_REQUEST_CODE);
+                startActivity(intent);
+               // registerForActivityResult(intent, ACTIVITY_REQUEST_CODE);
             }
         });
     }
@@ -112,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
+        initList();
+        InitFilterRoom();
     }
 
     @Override
@@ -151,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
     public void InitFilterRoom(){
 
         mRoom = apiService.getRoom();
-       // mRecyclerView.setAdapter(new MyRoomRecyclerViewAdapter(mRoom));
+        mRecyclerView.setAdapter(new MyRoomRecyclerViewAdapteur(mRoom));
 
 
     }

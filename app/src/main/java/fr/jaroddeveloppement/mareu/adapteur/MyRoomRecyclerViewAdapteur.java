@@ -22,7 +22,7 @@ public class MyRoomRecyclerViewAdapteur extends RecyclerView.Adapter<MyHolder>  
     private final List<Room> mRoom;
 
 
-    public MyRoomRecyclerViewAdapteur(List<Users> mRoom) {
+    public MyRoomRecyclerViewAdapteur(List<Room> mRoom) {
         this.mRoom = mRoom;
     }
 

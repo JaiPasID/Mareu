@@ -46,9 +46,6 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
 
 
 
-
-
-
         mSelectionParticipant = findViewById(R.id.buttonUser);
         mUserSelection = findViewById(R.id.userSelection);
         mButtonDate = findViewById(R.id.buttonDate);
@@ -80,7 +77,7 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
             public void onClick(View view) {
                 final DialogFragmentListUsers mDialogFragmentListUsers = new DialogFragmentListUsers();
                 mDialogFragmentListUsers.show(getSupportFragmentManager(),TAG);
-                onUserSet(users.getMail());
+
 
 
             }

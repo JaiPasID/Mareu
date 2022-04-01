@@ -14,7 +14,7 @@ import java.util.List;
 import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.event.DeleteEvent;
 import fr.jaroddeveloppement.mareu.model.Meeting;
-public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyHolder> {
+public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyHolderMeeting> {
 
 
 
@@ -27,16 +27,16 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyHolder>
 
     @NonNull
     @Override
-    public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyHolderMeeting onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_main, parent, false);
-        MyHolder holder = new MyHolder(view);
+        MyHolderMeeting holder = new MyHolderMeeting(view);
 
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyHolderMeeting holder, int position) {
 
         Meeting meeting = mMeeting.get(position);
         holder.mListMeeting.setText(meeting.getMeetingSubject());

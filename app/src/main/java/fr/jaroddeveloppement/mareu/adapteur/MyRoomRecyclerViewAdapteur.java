@@ -16,7 +16,7 @@ import fr.jaroddeveloppement.mareu.model.Room;
 import fr.jaroddeveloppement.mareu.model.Users;
 
 
-public class MyRoomRecyclerViewAdapteur extends RecyclerView.Adapter<MyHolder>  {
+public class MyRoomRecyclerViewAdapteur extends RecyclerView.Adapter<MyHolderRoom>  {
 
 
     private final List<Room> mRoom;
@@ -28,16 +28,16 @@ public class MyRoomRecyclerViewAdapteur extends RecyclerView.Adapter<MyHolder>  
 
     @NonNull
     @Override
-    public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyHolderRoom onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_room, parent, false);
-        MyHolder holder = new MyHolder(view);
+        MyHolderRoom holder = new MyHolderRoom(view);
 
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyHolderRoom holder, int position) {
         Room room = mRoom.get(position);
         holder.mListRoom.setText(room.getNomDeLaSalle());
     }

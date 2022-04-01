@@ -32,8 +32,10 @@ public class DialogFragmentListRoom extends DialogFragment {
 
         View rootView = inflater.inflate(R.layout.dialog_fragment_list_room, container);
 
+
         mRecyclerView = rootView.findViewById(R.id.recyclerViewRoom);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mMyRoomRecyclerViewAdapteur = new MyRoomRecyclerViewAdapteur(mApiService.getRoom());
 

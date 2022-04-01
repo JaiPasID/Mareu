@@ -70,7 +70,7 @@ public class DummyApiService implements ApiService {
                 meetingsFilterByDate.add(meetings.get(i));
             }
         }
-        //todo faire une boucle sur les meetings et recupérer les meeting qui ont la date = date en parametre
+
 
         return meetingsFilterByDate;
     }

@@ -15,7 +15,7 @@ import java.util.List;
 import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.model.Users;
 
-public class MyUserRecyclerViewAdapter extends RecyclerView.Adapter<MyHolder>  {
+public class MyUserRecyclerViewAdapter extends RecyclerView.Adapter<MyHolderUsers>  {
 
 
 
@@ -28,19 +28,19 @@ public class MyUserRecyclerViewAdapter extends RecyclerView.Adapter<MyHolder>  {
 
     @NonNull
     @Override
-    public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyHolderUsers onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_users,parent,false);
-        MyHolder holder = new MyHolder(view);
+        MyHolderUsers holder = new MyHolderUsers(view);
 
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyHolderUsers holder, int position) {
 
-        Users users = mUser.get(position);
-        holder.mListUser.setText(users.getMail());
+        Users user = mUser.get(position);
+        holder.mEmail.setText(user.getMail());
 
     }
 

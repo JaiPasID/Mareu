@@ -9,17 +9,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import fr.jaroddeveloppement.mareu.R;
 
-public class MyHolder extends RecyclerView.ViewHolder {
+public class MyHolderMeeting extends RecyclerView.ViewHolder {
 
-    TextView mListMeeting, mListUser, mListRoom;
+    TextView mListMeeting;
     ImageButton mImageButton;
 
-    public MyHolder(@NonNull View itemView) {
+    public MyHolderMeeting(@NonNull View itemView) {
         super(itemView);
 
         mListMeeting = itemView.findViewById(R.id.listMeeting);
-        mListRoom = itemView.findViewById(R.id.listRoom);
-        mListUser = itemView.findViewById(R.id.listUsers);
         mImageButton = itemView.findViewById(R.id.icDelete);
 
     }

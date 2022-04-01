@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.adapteur.MyUserRecyclerViewAdapter;
+import fr.jaroddeveloppement.mareu.di.DI;
 import fr.jaroddeveloppement.mareu.service.ApiService;
 
 public class DialogFragmentListUsers extends DialogFragment {
@@ -28,8 +29,10 @@ public class DialogFragmentListUsers extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.dialog_fragment_list_users, container);
 
+        View rootView = inflater.inflate(R.layout.recyclerview_user, container);
+
+        mApiServie = DI.getApiService();
         mRecyclerView = rootView.findViewById(R.id.recyclerViewUser);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 

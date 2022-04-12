@@ -13,7 +13,6 @@ public class DummyApiService implements ApiService {
     private List<Users> user = DummyUtilisateurGenerator.dummyUsers;
     private List<Room> listRooms = DummySalleGenerator.DUMMY_SALLE;
     private List<Meeting> meetings = new ArrayList<>();
-
     private List<Meeting> meetingsFilterByDate = new ArrayList<>();
     private List<Meeting> roomMeeting = new ArrayList<>();
 

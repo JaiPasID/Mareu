@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Ma réu</string>
+    <string name="dur_e_pr_vu_du_meeting">Durée prévu du meeting</string>
+    <string name="heure_s">heure(s)</string>
+    <string name="selectioner_les_participants">Selectioner les participants</string>
+    <string name="choisir_les_participants">Choisir les participants</string>
+    <string name="selectionner_une_heure">Selectionner une heure</string>
+    <string name="choisir_une_heure">Choisir une heure</string>
+    <string name="selectionner_une_date">Selectionner une date</string>
+    <string name="choisir_une_date">Choisir une date</string>
+    <string name="sujet_du_meeting">Sujet du Meeting</string>
 </resources>

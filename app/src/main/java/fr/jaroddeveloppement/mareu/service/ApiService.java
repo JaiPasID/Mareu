@@ -24,5 +24,4 @@ public interface ApiService {
    List<Meeting> filterByRoom (Room room);
    List<Meeting>filterByDate (String date);
 
-
 }

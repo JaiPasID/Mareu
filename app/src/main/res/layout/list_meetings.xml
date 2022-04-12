@@ -9,32 +9,82 @@
     android:id="@+id/pageMeeting">
 
     <View
+        android:id="@+id/colorMeeting"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/colorMeeting"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="70dp"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
+        android:id="@+id/NomDeLaSalle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Nom de la salle"
+        android:textSize="15sp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintStart_toEndOf="@+id/colorMeeting"
+        app:layout_constraintTop_toTopOf="@+id/colorMeeting" />
+
+    <TextView
         android:id="@+id/listMeeting"
-        app:layout_constraintBottom_toBottomOf="@+id/colorMeeting"
-        app:layout_constraintTop_toTopOf="@+id/colorMeeting"
-        app:layout_constraintStart_toEndOf="@+id/colorMeeting"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Sujet du meeting"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/icDelete"
+        app:layout_constraintTop_toTopOf="@+id/colorMeeting" />
+
+    <TextView
+        android:id="@+id/HeureMeeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Heure meeting"
+        android:textSize="15sp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/NomDeLaSalle"
+        app:layout_constraintStart_toEndOf="@+id/colorMeeting"
+        app:layout_constraintTop_toBottomOf="@+id/NomDeLaSalle" />
+
+    <TextView
+        android:id="@+id/DateMeeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="DateMeeting"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/icDelete"
+        app:layout_constraintTop_toBottomOf="@+id/ListMeeting" />
+
+    <TextView
+        android:id="@+id/particiapantMeeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Liste des participants"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/icDelete"
+        app:layout_constraintStart_toEndOf="@+id/colorMeeting"
+        app:layout_constraintTop_toBottomOf="@+id/HeureMeeting" />
+
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_delete"
         android:id="@+id/icDelete"
+        android:layout_marginTop="70dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/listMeeting"
-        app:layout_constraintBottom_toBottomOf="@+id/listMeeting"
+        app:layout_constraintTop_toTopOf="@+id/NomDeLaSalle"
+        app:layout_constraintBottom_toBottomOf="@+id/NomDeLaSalle"
         android:background="@null"
         android:layout_marginEnd="16dp"/>
 

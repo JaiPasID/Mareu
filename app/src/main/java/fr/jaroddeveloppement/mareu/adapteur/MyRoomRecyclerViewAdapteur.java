@@ -8,12 +8,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
 
 import fr.jaroddeveloppement.mareu.R;
+import fr.jaroddeveloppement.mareu.event.GetRoomEvent;
 import fr.jaroddeveloppement.mareu.model.Room;
-import fr.jaroddeveloppement.mareu.model.Users;
 
 
 public class MyRoomRecyclerViewAdapteur extends RecyclerView.Adapter<MyHolderRoom>  {
@@ -33,6 +35,7 @@ public class MyRoomRecyclerViewAdapteur extends RecyclerView.Adapter<MyHolderRoo
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_room, parent, false);
         MyHolderRoom holder = new MyHolderRoom(view);
 
+
         return holder;
     }
 
@@ -40,6 +43,14 @@ public class MyRoomRecyclerViewAdapteur extends RecyclerView.Adapter<MyHolderRoo
     public void onBindViewHolder(@NonNull MyHolderRoom holder, int position) {
         Room room = mRoom.get(position);
         holder.mListRoom.setText(room.getNomDeLaSalle());
+        holder.mRoomColor.setBackgroundColor(room.getColorRoom());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EventBus.getDefault().post(new GetRoomEvent(room));
+            }
+        });
     }
 
     @Override

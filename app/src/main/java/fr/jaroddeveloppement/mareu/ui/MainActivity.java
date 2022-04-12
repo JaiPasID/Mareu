@@ -1,7 +1,7 @@
 package fr.jaroddeveloppement.mareu.ui;
 
 
-import androidx.activity.result.ActivityResultLauncher;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.DatePicker;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -23,7 +24,7 @@ import org.greenrobot.eventbus.Subscribe;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.List;
-import java.util.PrimitiveIterator;
+
 
 import fr.jaroddeveloppement.mareu.di.DI;
 import fr.jaroddeveloppement.mareu.dialogFragment.DatePickerFragment;
@@ -36,12 +37,14 @@ import fr.jaroddeveloppement.mareu.adapteur.MyMeetingRecyclerViewAdapter;
 import fr.jaroddeveloppement.mareu.adapteur.MyRoomRecyclerViewAdapteur;
 import fr.jaroddeveloppement.mareu.service.ApiService;
 import fr.jaroddeveloppement.mareu.dialogFragment.DialogFragmentListRoom;
+import fr.jaroddeveloppement.mareu.service.GetRoomFromDialogFragment;
 
-public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, GetRoomFromDialogFragment {
 
     private Toolbar mToolbar;
     private RecyclerView mRecyclerView;
     private List<Meeting> mMeeting;
+
     private ApiService apiService;
     private List<Room> mRoom;
 
@@ -52,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private FloatingActionButton mAddMeeting;
 
 
-    private final int ACTIVITY_REQUEST_CODE = 40;
 
 
 
@@ -80,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             case R.id.filterRoom:
 
                 DialogFragmentListRoom roomsListFragment = new DialogFragmentListRoom();
+                roomsListFragment.setRoomListener(this);
                 roomsListFragment.show(getSupportFragmentManager(), "RoomsListFragment");
 
 
@@ -102,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         mToolbar = findViewById(R.id.namToolBar);
         mRecyclerView = findViewById(R.id.recyclerViewMeeting);
         mAddMeeting = findViewById(R.id.buttonAddMeeting);
+
 
         apiService = DI.getApiService();
 
@@ -187,6 +191,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         List<Meeting> meetingsFiltreByDate = apiService.filterByDate(currentDate);
         mRecyclerView.setAdapter(new MyMeetingRecyclerViewAdapter(meetingsFiltreByDate));
 
+
+    }
+
+    @Override
+    public void GetRoom(Room mroom) {
+        List<Meeting> meetingsFiltreByRoom = apiService.filterByRoom(mroom);
+        mRecyclerView.setAdapter(new MyMeetingRecyclerViewAdapter(meetingsFiltreByRoom));
 
     }
 }

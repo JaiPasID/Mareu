@@ -8,6 +8,8 @@ public class Room {
     /** Name Show Room */
     private String nomDeLaSalle;
 
+    private int colorRoom;
+
 
 
     /**
@@ -15,12 +17,19 @@ public class Room {
      * @param id
      * @param nomDeLaSalle
      */
-    public Room(long id, String nomDeLaSalle) {
+    public Room(long id, String nomDeLaSalle, int colorRoom) {
         this.id = id;
         this.nomDeLaSalle = nomDeLaSalle;
+        this.colorRoom = colorRoom;
     }
 
+    public int getColorRoom() {
+        return colorRoom;
+    }
 
+    public void setColorRoom(int colorRoom) {
+        this.colorRoom = colorRoom;
+    }
 
     public long getId() {
         return id;
@@ -37,6 +46,8 @@ public class Room {
     public void setNomDeLaSalle(String nomDeLaSalle) {
         this.nomDeLaSalle = nomDeLaSalle;
     }
+
+
 
 
 

@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -41,17 +43,20 @@ public class MySpinnerAdapter extends ArrayAdapter<Room> {
                     R.layout.spinner, parent, false
             );
         }
-        View viewRoomColor = convertView.findViewById(R.id.chooseRoom);
+        View viewRoomColor = convertView.findViewById(R.id.imageView_roomColor);
+        TextView textViewRoomName = convertView.findViewById(R.id.textSpinner);
+
 
 
          Room mRoom = getItem(position);
 
         if (mRoom != null) {
+
             viewRoomColor.setBackgroundResource(R.drawable.circle);
             GradientDrawable drawable = (GradientDrawable) viewRoomColor.getBackground();
             drawable.setColor(ContextCompat.getColor(viewRoomColor.getContext(), mRoom.getColorRoom()));
 
-
+            textViewRoomName.setText(mRoom.getNomDeLaSalle());
 
         }
         return convertView;

@@ -7,8 +7,7 @@ public class Meeting {
     Room room;
 
     private String date;
-    private String startingTime;
-    private String endTime;
+    private String time;
     private String meetingSubject;
 
 
@@ -34,18 +33,16 @@ public class Meeting {
      * @param users
      * @param room
      * @param date
-     * @param startingTime
-     * @param endTime
+     * @param time
      * @param meetingSubject
      */
 
 
-    public Meeting(Users users, Room room, String date, String startingTime, String endTime, String meetingSubject) {
+    public Meeting(Users users, Room room, String date, String time, String meetingSubject) {
         this.users = users;
         this.room = room;
         this.date = date;
-        this.startingTime = startingTime;
-        this.endTime = endTime;
+        this.time = time;
         this.meetingSubject = meetingSubject;
     }
 
@@ -58,20 +55,13 @@ public class Meeting {
     }
 
     public String getStartingTime() {
-        return startingTime;
+        return time;
     }
 
     public void setStartingTime(String startingTime) {
-        this.startingTime = startingTime;
+        this.time = startingTime;
     }
 
-    public String getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
-    }
 
     public String getMeetingSubject() {
         return meetingSubject;

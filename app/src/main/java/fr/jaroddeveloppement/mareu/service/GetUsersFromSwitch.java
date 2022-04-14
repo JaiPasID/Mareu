@@ -8,4 +8,5 @@ import fr.jaroddeveloppement.mareu.model.Users;
 public interface GetUsersFromSwitch {
 
     void GetUser(List<Users> mUser);
+
 }

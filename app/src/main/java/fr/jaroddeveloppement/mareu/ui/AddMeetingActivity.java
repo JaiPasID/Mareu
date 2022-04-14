@@ -29,6 +29,7 @@ import fr.jaroddeveloppement.mareu.di.DI;
 import fr.jaroddeveloppement.mareu.dialogFragment.DatePickerFragment;
 import fr.jaroddeveloppement.mareu.dialogFragment.DialogFragmentListUsers;
 import fr.jaroddeveloppement.mareu.dialogFragment.TimePickerFragment;
+import fr.jaroddeveloppement.mareu.model.Meeting;
 import fr.jaroddeveloppement.mareu.model.Room;
 import fr.jaroddeveloppement.mareu.model.Users;
 import fr.jaroddeveloppement.mareu.service.ApiService;
@@ -39,14 +40,15 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
 
     private ApiService mApiservice;
     Button mSelectionParticipant, mButtonDate, mButtonTime, mValidation;
-    TextView mDate, mTime, mUserSelection;
+    TextView mDate, mTime,mUserSelection;
     Spinner mSpinner;
     TextInputEditText mSujet;
     public static String TAG = "User";
     public static String TAGDATE = "Date Picker";
     public static String TAGTIME = "Time Picker";
     List<Users> users = new ArrayList<>();
-    public GetUsersFromSwitch mGetNewUsersEvent;
+    Meeting mMeeting;
+    public GetUsersFromSwitch mGetUsersFromSwitch;
 
 
     @Override
@@ -58,8 +60,8 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
 
 
         mSelectionParticipant = findViewById(R.id.buttonUser);
-        mUserSelection = findViewById(R.id.userSelection);
         mButtonDate = findViewById(R.id.buttonDate);
+        mUserSelection = findViewById(R.id.userSelection);
         mDate = findViewById(R.id.dateSelection);
         mButtonTime = findViewById(R.id.buttonTime);
         mTime = findViewById(R.id.timeSelection);
@@ -103,14 +105,15 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
         mValidation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String sujet = mSujet.getText().toString();
                 String date = mDate.getText().toString();
                 String time = mTime.getText().toString();
+               // TODO Corriger et chercher d'ou viens la liste Users user = mUserSelection.getText();
+                Room room = (Room) mSpinner.getSelectedItem();
+              // TODO Finaliser apres user  Meeting mMeeting = new Meeting(user, room, date, time, sujet);
 
-                // result spinner Room room =
-                // Meeting mMeeting = new Meeting(users, room, date, time, sujet);
-
-                //apiService.addMeeting(mMeeting);
+                mApiservice.addMeeting(mMeeting);
                 finish();
             }
         });
@@ -138,11 +141,6 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
 
         mTime.setText(hour + " Heures " + minute + " Minutes ");
 
-    }
-
-    public void onUserSet(String mail) {
-
-        mUserSelection.setText(mail);
     }
 
 

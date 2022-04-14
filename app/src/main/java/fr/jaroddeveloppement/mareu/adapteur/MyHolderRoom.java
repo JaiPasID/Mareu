@@ -10,18 +10,16 @@ import fr.jaroddeveloppement.mareu.R;
 
 public class MyHolderRoom extends RecyclerView.ViewHolder {
 
-        TextView mListRoom;
-        View mRoomColor;
+    TextView mListRoom;
+    View mRoomColor;
 
 
-
-public MyHolderRoom(@NonNull View itemView) {
+    public MyHolderRoom(@NonNull View itemView) {
         super(itemView);
 
-    mListRoom = itemView.findViewById(R.id.listRoom);
-    mRoomColor = itemView.findViewById(R.id.colorMeeting);
+        mListRoom = itemView.findViewById(R.id.listRoom);
+        mRoomColor = itemView.findViewById(R.id.colorMeeting);
 
 
-
-        }
+    }
 }

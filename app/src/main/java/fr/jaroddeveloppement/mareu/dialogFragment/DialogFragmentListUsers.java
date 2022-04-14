@@ -7,13 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -80,12 +78,11 @@ public class DialogFragmentListUsers extends DialogFragment {
     }
 
     @Subscribe
-    public void getSwitchChange(GetUserEvent event){
+    public void getSwitchChange(GetUserEvent event) {
 
-        if (!mUserSwitch.contains(event.mUsers )){
+        if (!mUserSwitch.contains(event.mUsers)) {
             mUserSwitch.add(event.mUsers);
         }
-
 
 
     }

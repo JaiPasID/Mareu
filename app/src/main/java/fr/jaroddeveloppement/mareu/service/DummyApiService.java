@@ -17,8 +17,6 @@ public class DummyApiService implements ApiService {
     private List<Meeting> roomMeeting = new ArrayList<>();
 
 
-
-
     @Override
     public List<Users> getUser() {
         return user;
@@ -51,11 +49,11 @@ public class DummyApiService implements ApiService {
     public List<Meeting> filterByRoom(Room room) {
 
 
-        for (int i = 0 ; i <meetings.size(); i++){
-        Meeting element = meetings.get(i);
-        if (meetings.get(i).getRoom().getNomDeLaSalle().equals(room.getNomDeLaSalle())){
-            roomMeeting.add(meetings.get(i));
-        }
+        for (int i = 0; i < meetings.size(); i++) {
+            Meeting element = meetings.get(i);
+            if (meetings.get(i).getRoom().getNomDeLaSalle().equals(room.getNomDeLaSalle())) {
+                roomMeeting.add(meetings.get(i));
+            }
         }
 
         return roomMeeting;
@@ -64,8 +62,8 @@ public class DummyApiService implements ApiService {
     @Override
     public List<Meeting> filterByDate(String date) {
 
-        for (int i = 0 ; i < meetings.size(); ++i){
-            if (meetings.get(i).getDate().equals(date)){
+        for (int i = 0; i < meetings.size(); ++i) {
+            if (meetings.get(i).getDate().equals(date)) {
                 meetingsFilterByDate.add(meetings.get(i));
             }
         }
@@ -73,8 +71,6 @@ public class DummyApiService implements ApiService {
 
         return meetingsFilterByDate;
     }
-
-
 
 
 }

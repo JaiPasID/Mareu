@@ -9,4 +9,5 @@
     <string name="selectionner_une_date">Selectionner une date</string>
     <string name="choisir_une_date">Choisir une date</string>
     <string name="sujet_du_meeting">Sujet du Meeting</string>
+    <string name="valider">Valider</string>
 </resources>

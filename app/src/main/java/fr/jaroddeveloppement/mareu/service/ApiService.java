@@ -9,19 +9,26 @@ import fr.jaroddeveloppement.mareu.model.Users;
 public interface ApiService {
 
 
-    List <Users> getUser();
-    List <Room> getRoom();
-    List <Meeting>getMeeting();
+    List<Users> getUser();
+
+    List<Room> getRoom();
+
+    List<Meeting> getMeeting();
 
 
-    /** Add an appointment*/
+    /**
+     * Add an appointment
+     */
 
-   void addMeeting(Meeting meetings);
+    void addMeeting(Meeting meetings);
 
-   /** Remove an appointment */
-   void removeMetting(Meeting meeting);
+    /**
+     * Remove an appointment
+     */
+    void removeMetting(Meeting meeting);
 
-   List<Meeting> filterByRoom (Room room);
-   List<Meeting>filterByDate (String date);
+    List<Meeting> filterByRoom(Room room);
+
+    List<Meeting> filterByDate(String date);
 
 }

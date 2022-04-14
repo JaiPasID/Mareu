@@ -53,20 +53,18 @@
             android:layout_marginBottom="50dp"
             android:text="@string/selectioner_les_participants" />
 
-        <Spinner
-            android:id="@+id/chooseRoom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp" />
+
+        <include layout="@layout/spinner"/>
+
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/sujetMeeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:layout_marginBottom="50dp"
             android:hint="@string/sujet_du_meeting"
             android:maxLength="@integer/material_motion_duration_long_1"
-            android:layout_marginBottom="50dp" />
+            android:text="" />
 
 
         <TextView
@@ -98,7 +96,7 @@
             android:id="@+id/validationMeeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Valider" />
+            android:text="@string/valider" />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,12 +1,6 @@
 package fr.jaroddeveloppement.mareu.ui;
 
 
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,8 +9,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.textfield.TextInputEditText;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -25,18 +23,17 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.List;
 
-
+import fr.jaroddeveloppement.mareu.R;
+import fr.jaroddeveloppement.mareu.adapteur.MyMeetingRecyclerViewAdapter;
+import fr.jaroddeveloppement.mareu.adapteur.MyRoomRecyclerViewAdapter;
 import fr.jaroddeveloppement.mareu.di.DI;
 import fr.jaroddeveloppement.mareu.dialogFragment.DatePickerFragment;
+import fr.jaroddeveloppement.mareu.dialogFragment.DialogFragmentListRoom;
 import fr.jaroddeveloppement.mareu.event.DeleteEvent;
-import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.model.Meeting;
 import fr.jaroddeveloppement.mareu.model.Room;
 import fr.jaroddeveloppement.mareu.model.Users;
-import fr.jaroddeveloppement.mareu.adapteur.MyMeetingRecyclerViewAdapter;
-import fr.jaroddeveloppement.mareu.adapteur.MyRoomRecyclerViewAdapteur;
 import fr.jaroddeveloppement.mareu.service.ApiService;
-import fr.jaroddeveloppement.mareu.dialogFragment.DialogFragmentListRoom;
 import fr.jaroddeveloppement.mareu.service.GetRoomFromDialogFragment;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, GetRoomFromDialogFragment {
@@ -55,11 +52,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private FloatingActionButton mAddMeeting;
 
 
-
-
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -70,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.filterDate:
 
                 DatePickerFragment datePickerFragment = new DatePickerFragment();
@@ -78,13 +70,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 break;
 
 
-
             case R.id.filterRoom:
 
                 DialogFragmentListRoom roomsListFragment = new DialogFragmentListRoom();
                 roomsListFragment.setRoomListener(this);
                 roomsListFragment.show(getSupportFragmentManager(), "RoomsListFragment");
-
 
 
             case R.id.reset_filter:
@@ -112,11 +102,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         init();
 
 
-
         mAddMeeting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =  new Intent(MainActivity.this, AddMeetingActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddMeetingActivity.class);
                 startActivity(intent);
 
             }
@@ -152,14 +141,14 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     }
 
-    public void init(){
+    public void init() {
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Ma Réu");
 
 
-
     }
+
     public void initList() {
 
         mMeeting = apiService.getMeeting();
@@ -168,11 +157,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     }
 
-    public void InitFilterRoom(){
+    public void InitFilterRoom() {
 
         mRoom = apiService.getRoom();
 
-        mRecyclerView.setAdapter(new MyRoomRecyclerViewAdapteur(mRoom));
+        mRecyclerView.setAdapter(new MyRoomRecyclerViewAdapter(mRoom));
 
 
     }
@@ -184,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.YEAR, year);
         calendar.set(Calendar.MONTH, month);
-        calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
 

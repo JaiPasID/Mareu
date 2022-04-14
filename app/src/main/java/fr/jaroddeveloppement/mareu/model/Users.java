@@ -3,13 +3,14 @@ package fr.jaroddeveloppement.mareu.model;
 public class Users {
 
 
-   private String name;
+    private String name;
     private String firstname;
     private String department;
     private String mail;
 
     /**
      * Constructor
+     *
      * @param name
      * @param firstname
      * @param department
@@ -21,8 +22,6 @@ public class Users {
         this.department = department;
         this.mail = mail;
     }
-
-
 
 
     public String getName() {

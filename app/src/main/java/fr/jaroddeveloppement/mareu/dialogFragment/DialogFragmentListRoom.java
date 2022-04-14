@@ -5,19 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import fr.jaroddeveloppement.mareu.R;
-import fr.jaroddeveloppement.mareu.adapteur.MyRoomRecyclerViewAdapteur;
+import fr.jaroddeveloppement.mareu.adapteur.MyRoomRecyclerViewAdapter;
 import fr.jaroddeveloppement.mareu.di.DI;
 import fr.jaroddeveloppement.mareu.event.GetRoomEvent;
 import fr.jaroddeveloppement.mareu.model.Room;
@@ -29,7 +27,7 @@ public class DialogFragmentListRoom extends DialogFragment {
 
     private ApiService mApiService;
     private RecyclerView mRecyclerView;
-    private MyRoomRecyclerViewAdapteur mMyRoomRecyclerViewAdapteur;
+    private MyRoomRecyclerViewAdapter mMyRoomRecyclerViewAdapteur;
     private GetRoomFromDialogFragment mGetRoomFromDialogFragment;
 
     @Nullable
@@ -40,10 +38,10 @@ public class DialogFragmentListRoom extends DialogFragment {
 
         mApiService = DI.getApiService();
         mRecyclerView = rootView.findViewById(R.id.recyclerViewRoom);
-        
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        mMyRoomRecyclerViewAdapteur = new MyRoomRecyclerViewAdapteur(mApiService.getRoom());
+        mMyRoomRecyclerViewAdapteur = new MyRoomRecyclerViewAdapter(mApiService.getRoom());
 
         mRecyclerView.setAdapter(mMyRoomRecyclerViewAdapteur);
 
@@ -65,7 +63,7 @@ public class DialogFragmentListRoom extends DialogFragment {
     }
 
     @Subscribe
-    public void getSelectedRoom (GetRoomEvent event){
+    public void getSelectedRoom(GetRoomEvent event) {
 
         Room mMyRoom = event.mRoom;
 
@@ -74,7 +72,7 @@ public class DialogFragmentListRoom extends DialogFragment {
 
     }
 
-    public void setRoomListener(GetRoomFromDialogFragment mGetRoomFromDialogFragment){
+    public void setRoomListener(GetRoomFromDialogFragment mGetRoomFromDialogFragment) {
 
         this.mGetRoomFromDialogFragment = mGetRoomFromDialogFragment;
     }

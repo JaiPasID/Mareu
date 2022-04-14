@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,14 +13,12 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
-
 import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.event.GetUserEvent;
 import fr.jaroddeveloppement.mareu.model.Users;
 import fr.jaroddeveloppement.mareu.service.GetUsersFromSwitch;
 
-public class MyUserRecyclerViewAdapter extends RecyclerView.Adapter<MyHolderUsers>  {
-
+public class MyUserRecyclerViewAdapter extends RecyclerView.Adapter<MyHolderUsers> {
 
 
     private final List<Users> mUser;
@@ -36,7 +33,7 @@ public class MyUserRecyclerViewAdapter extends RecyclerView.Adapter<MyHolderUser
     @Override
     public MyHolderUsers onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_users,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_users, parent, false);
         MyHolderUsers holder = new MyHolderUsers(view);
 
         return holder;
@@ -50,7 +47,7 @@ public class MyUserRecyclerViewAdapter extends RecyclerView.Adapter<MyHolderUser
         holder.mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isCheck) {
-                if (isCheck){
+                if (isCheck) {
                     EventBus.getDefault().post(new GetUserEvent(user));
                 }
             }

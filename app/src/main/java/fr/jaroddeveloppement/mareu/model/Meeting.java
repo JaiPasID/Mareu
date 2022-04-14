@@ -1,15 +1,15 @@
 package fr.jaroddeveloppement.mareu.model;
 
 
-public class Meeting  {
+public class Meeting {
 
     Users users;
     Room room;
 
-   private String date;
-   private String startingTime;
-   private String endTime;
-   private String meetingSubject;
+    private String date;
+    private String startingTime;
+    private String endTime;
+    private String meetingSubject;
 
 
     public Users getUsers() {
@@ -30,6 +30,7 @@ public class Meeting  {
 
     /**
      * Constructor
+     *
      * @param users
      * @param room
      * @param date

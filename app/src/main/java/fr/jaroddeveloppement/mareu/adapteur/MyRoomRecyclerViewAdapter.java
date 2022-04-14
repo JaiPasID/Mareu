@@ -12,19 +12,18 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
-
 import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.event.GetRoomEvent;
 import fr.jaroddeveloppement.mareu.model.Room;
 
 
-public class MyRoomRecyclerViewAdapteur extends RecyclerView.Adapter<MyHolderRoom>  {
+public class MyRoomRecyclerViewAdapter extends RecyclerView.Adapter<MyHolderRoom> {
 
 
     private final List<Room> mRoom;
 
 
-    public MyRoomRecyclerViewAdapteur(List<Room> mRoom) {
+    public MyRoomRecyclerViewAdapter(List<Room> mRoom) {
         this.mRoom = mRoom;
     }
 

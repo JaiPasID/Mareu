@@ -4,6 +4,7 @@ package fr.jaroddeveloppement.mareu.adapteur;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,8 +15,8 @@ import java.util.List;
 import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.event.DeleteEvent;
 import fr.jaroddeveloppement.mareu.model.Meeting;
-public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyHolderMeeting> {
 
+public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyHolderMeeting> {
 
 
     private final List<Meeting> mMeeting;

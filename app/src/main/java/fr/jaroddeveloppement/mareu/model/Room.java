@@ -2,18 +2,22 @@ package fr.jaroddeveloppement.mareu.model;
 
 public class Room {
 
-   /** Identifier*/
+    /**
+     * Identifier
+     */
     private long id;
 
-    /** Name Show Room */
+    /**
+     * Name Show Room
+     */
     private String nomDeLaSalle;
 
     private int colorRoom;
 
 
-
     /**
      * Constructor
+     *
      * @param id
      * @param nomDeLaSalle
      */
@@ -46,9 +50,6 @@ public class Room {
     public void setNomDeLaSalle(String nomDeLaSalle) {
         this.nomDeLaSalle = nomDeLaSalle;
     }
-
-
-
 
 
 }

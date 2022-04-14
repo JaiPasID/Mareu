@@ -1,19 +1,20 @@
 package fr.jaroddeveloppement.mareu.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -22,22 +23,21 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import fr.jaroddeveloppement.mareu.di.DI;
 import fr.jaroddeveloppement.mareu.R;
+import fr.jaroddeveloppement.mareu.adapteur.MySpinnerAdapter;
+import fr.jaroddeveloppement.mareu.di.DI;
+import fr.jaroddeveloppement.mareu.dialogFragment.DatePickerFragment;
 import fr.jaroddeveloppement.mareu.dialogFragment.DialogFragmentListUsers;
-
-import fr.jaroddeveloppement.mareu.model.Meeting;
+import fr.jaroddeveloppement.mareu.dialogFragment.TimePickerFragment;
 import fr.jaroddeveloppement.mareu.model.Room;
 import fr.jaroddeveloppement.mareu.model.Users;
-import fr.jaroddeveloppement.mareu.dialogFragment.DatePickerFragment;
-import fr.jaroddeveloppement.mareu.dialogFragment.TimePickerFragment;
 import fr.jaroddeveloppement.mareu.service.ApiService;
 import fr.jaroddeveloppement.mareu.service.GetUsersFromSwitch;
 
 public class AddMeetingActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener, GetUsersFromSwitch {
 
 
-    private ApiService apiService;
+    private ApiService mApiservice;
     Button mSelectionParticipant, mButtonDate, mButtonTime, mValidation;
     TextView mDate, mTime, mUserSelection;
     Spinner mSpinner;
@@ -54,7 +54,7 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_meeting);
 
-        apiService = DI.getApiService();
+        mApiservice = DI.getApiService();
 
 
         mSelectionParticipant = findViewById(R.id.buttonUser);
@@ -67,6 +67,7 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
         mSpinner = findViewById(R.id.chooseRoom);
         mSujet = findViewById(R.id.sujetMeeting);
 
+        setUpSpinner();
 
 
         mButtonDate.setOnClickListener(new View.OnClickListener() {
@@ -93,20 +94,21 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
                 mDialogFragmentListUsers.show(getSupportFragmentManager(), TAG);
 
 
-
             }
         });
+
+
 
         // Meeting(Users users, Room room, String date, String startingTime, String endTime, String meetingSubject)
         mValidation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            String sujet = mSujet.getText().toString();
-            String date  = mDate.getText().toString();
-            String time = mTime.getText().toString();
+                String sujet = mSujet.getText().toString();
+                String date = mDate.getText().toString();
+                String time = mTime.getText().toString();
 
-               // result spinner Room room =
-               // Meeting mMeeting = new Meeting(users, room, date, time, sujet);
+                // result spinner Room room =
+                // Meeting mMeeting = new Meeting(users, room, date, time, sujet);
 
                 //apiService.addMeeting(mMeeting);
                 finish();
@@ -149,4 +151,25 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
         Log.d("myList", mUser.get(0).getMail());
         users = mUser;
     }
+
+    private void setUpSpinner() {
+       List <Room> roomList = mApiservice.getRoom();
+
+
+        mSpinner.setAdapter(new MySpinnerAdapter(this,0, (List<Room>) roomList));
+        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Room clickedRoom = (Room) parent.getItemAtPosition(position);
+                String clickedRoomName = clickedRoom.getNomDeLaSalle();
+                Toast.makeText(AddMeetingActivity.this, clickedRoomName + " selected", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
 }

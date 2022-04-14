@@ -4,6 +4,9 @@ import fr.jaroddeveloppement.mareu.model.Users;
 
 public class GetUserEvent {
 
-    public Users  mUsers;
-    public GetUserEvent(Users mUsers){this.mUsers = mUsers;}
+    public Users mUsers;
+
+    public GetUserEvent(Users mUsers) {
+        this.mUsers = mUsers;
+    }
 }

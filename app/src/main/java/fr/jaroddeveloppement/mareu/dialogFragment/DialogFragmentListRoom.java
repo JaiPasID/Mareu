@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.List;
+
 import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.adapteur.MyRoomRecyclerViewAdapter;
 import fr.jaroddeveloppement.mareu.di.DI;
@@ -37,11 +39,12 @@ public class DialogFragmentListRoom extends DialogFragment {
         View rootView = inflater.inflate(R.layout.recyclerview_room, container);
 
         mApiService = DI.getApiService();
+        List<Room> rooms = mApiService.getRoom();
         mRecyclerView = rootView.findViewById(R.id.recyclerViewRoom);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        mMyRoomRecyclerViewAdapteur = new MyRoomRecyclerViewAdapter(mApiService.getRoom());
+        mMyRoomRecyclerViewAdapteur = new MyRoomRecyclerViewAdapter(rooms);
 
         mRecyclerView.setAdapter(mMyRoomRecyclerViewAdapteur);
 

@@ -47,8 +47,7 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
     public static String TAGDATE = "Date Picker";
     public static String TAGTIME = "Time Picker";
     List<Users> users = new ArrayList<>();
-    Meeting mMeeting;
-    public GetUsersFromSwitch mGetUsersFromSwitch;
+
 
 
     @Override
@@ -101,7 +100,7 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
 
 
 
-        // Meeting(Users users, Room room, String date, String startingTime, String endTime, String meetingSubject)
+        // Meeting(Users users, Room room, String date, String startingTime, String meetingSubject)
         mValidation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,9 +108,8 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
                 String sujet = mSujet.getText().toString();
                 String date = mDate.getText().toString();
                 String time = mTime.getText().toString();
-               // TODO Corriger et chercher d'ou viens la liste Users user = mUserSelection.getText();
                 Room room = (Room) mSpinner.getSelectedItem();
-              // TODO Finaliser apres user  Meeting mMeeting = new Meeting(user, room, date, time, sujet);
+               Meeting mMeeting = new Meeting(users, room, date, time, sujet);
 
                 mApiservice.addMeeting(mMeeting);
                 finish();
@@ -148,6 +146,7 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
     public void GetUser(List<Users> mUser) {
         Log.d("myList", mUser.get(0).getMail());
         users = mUser;
+
     }
 
     private void setUpSpinner() {

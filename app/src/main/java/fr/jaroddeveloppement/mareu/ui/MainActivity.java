@@ -12,6 +12,8 @@ import android.widget.DatePicker;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -117,14 +119,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
-        initList();
         InitFilterRoom();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
+        initList();
 
     }
 
@@ -152,8 +153,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void initList() {
 
         mMeeting = apiService.getMeeting();
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         mRecyclerView.setAdapter(new MyMeetingRecyclerViewAdapter(mMeeting));
+
 
     }
 

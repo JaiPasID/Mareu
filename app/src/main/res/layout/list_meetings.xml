@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="@+id/colorMeeting" />
 
     <TextView
-        android:id="@+id/listMeeting"
+        android:id="@+id/subjectItemMeeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -62,7 +62,8 @@
         android:text="DateMeeting"
         android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/icDelete"
-        app:layout_constraintTop_toBottomOf="@+id/ListMeeting" />
+        app:layout_constraintStart_toEndOf="@+id/HeureMeeting"
+        app:layout_constraintTop_toBottomOf="@+id/subjectItemMeeting" />
 
     <TextView
         android:id="@+id/particiapantMeeting"

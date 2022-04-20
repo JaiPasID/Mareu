@@ -1,31 +1,21 @@
 package fr.jaroddeveloppement.mareu.model;
 
 
+import java.util.List;
+
 public class Meeting {
 
-    Users users;
+    List<Users> users;
     Room room;
+
 
     private String date;
     private String time;
     private String meetingSubject;
 
 
-    public Users getUsers() {
-        return users;
-    }
 
-    public void setUsers(Users users) {
-        this.users = users;
-    }
 
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
 
     /**
      * Constructor
@@ -38,7 +28,7 @@ public class Meeting {
      */
 
 
-    public Meeting(Users users, Room room, String date, String time, String meetingSubject) {
+    public Meeting(List<Users> users, Room room, String date, String time, String meetingSubject) {
         this.users = users;
         this.room = room;
         this.date = date;
@@ -54,11 +44,11 @@ public class Meeting {
         this.date = date;
     }
 
-    public String getStartingTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setStartingTime(String startingTime) {
+    public void setTime(String startingTime) {
         this.time = startingTime;
     }
 
@@ -70,4 +60,21 @@ public class Meeting {
     public void setMeetingSubject(String meetingSubject) {
         this.meetingSubject = meetingSubject;
     }
+
+    public List<Users> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<Users> users) {
+        this.users = users;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
 }

@@ -11,14 +11,21 @@ import fr.jaroddeveloppement.mareu.R;
 
 public class MyHolderMeeting extends RecyclerView.ViewHolder {
 
-    TextView mListMeeting;
+
+    TextView mSujet, mRoomName, mDateMeeting, mHeureMeeting, mParticiapantMeeting;
+    View mColorRoom;
     ImageButton mImageButton;
 
     public MyHolderMeeting(@NonNull View itemView) {
         super(itemView);
 
-        mListMeeting = itemView.findViewById(R.id.listMeeting);
+        mSujet = itemView.findViewById(R.id.subjectItemMeeting);
+        mRoomName = itemView.findViewById(R.id.NomDeLaSalle);
         mImageButton = itemView.findViewById(R.id.icDelete);
+        mDateMeeting = itemView.findViewById(R.id.DateMeeting);
+        mHeureMeeting = itemView.findViewById(R.id.HeureMeeting);
+        mColorRoom = itemView.findViewById(R.id.colorMeeting);
+        mParticiapantMeeting = itemView.findViewById(R.id.particiapantMeeting);
 
     }
 }

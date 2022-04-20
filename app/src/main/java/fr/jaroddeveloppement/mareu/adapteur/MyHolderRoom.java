@@ -18,7 +18,7 @@ public class MyHolderRoom extends RecyclerView.ViewHolder {
         super(itemView);
 
         mListRoom = itemView.findViewById(R.id.listRoom);
-        mRoomColor = itemView.findViewById(R.id.colorMeeting);
+        mRoomColor = itemView.findViewById(R.id.colorRoom);
 
 
     }

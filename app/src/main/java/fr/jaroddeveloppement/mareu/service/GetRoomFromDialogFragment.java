@@ -4,5 +4,5 @@ import fr.jaroddeveloppement.mareu.model.Room;
 
 public interface GetRoomFromDialogFragment {
 
-    void GetRoom(Room mroom);
+    void GetRoom(Room mRoom);
 }

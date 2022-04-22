@@ -1,6 +1,10 @@
 package fr.jaroddeveloppement.mareu.service;
 
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.hamcrest.collection.IsIterableContainingInAnyOrder;
 import org.junit.Before;
 import org.junit.Test;
@@ -47,32 +51,46 @@ public class ApiServiceTest {
     @Test
     public void testGetMeeting() {
 
-        //TODO creer deux objets meeting et verifier le size de la liste
+        List<Meeting> mMeeting =mApiServcie.getMeeting();
+        List<Meeting>expectedMeetingList = DummyMeetingTest.DUMMY_METING_TEST;
+        org.hamcrest.MatcherAssert.assertThat(mMeeting, IsIterableContainingInAnyOrder.containsInAnyOrder(expectedMeetingList.toArray()));
 
-        List<Meeting> mGetMeeting = mApiServcie.getMeeting();
-        //List<Meeting> expectedMeeting = DummyApiService.ArrayList<Meeting>;
-       // assertThat(mGetMeeting, IsIterableContainingInAnyOrder.containsInAnyOrder(expectedMeeting.toArray()));
     }
 
     @Test
     public void testAddMeeting() {
 
-        //todo creer un meeting
+        Meeting meeting = new Meeting(DummyUtilisateurGenerator.dummyUsers, DummySalleGenerator.DUMMY_SALLE.get(5), "2022,05,05", "08,15","Test rendez vous");
+        assertFalse(mApiServcie.getMeeting().contains(meeting));
+        mApiServcie.addMeeting(meeting);
+        assertTrue(mApiServcie.getMeeting().contains(meeting));
     }
 
     @Test
     public void testRemoveMetting() {
-        //todo  creer un meeting + delete
+        Meeting mMeeting = mApiServcie.getMeeting().get(0);
+        assertTrue(mApiServcie.getMeeting().contains(mMeeting));
+        mApiServcie.removeMetting(mMeeting);
+        assertFalse(mApiServcie.getMeeting().contains(mMeeting));
     }
 
     @Test
     public void testFilterByRoom() {
-        //todo creer un meeting et le filtrer par Room
+        Meeting mMeeting = mApiServcie.getMeeting().get(0);
+        List<Meeting> originalMeetingList = mApiServcie.getMeeting();
+        assertTrue(originalMeetingList.size() > 1);
+        List<Meeting> filteredMeetingList = mApiServcie.filterByRoom(mMeeting.getRoom());
+        assertTrue(filteredMeetingList.contains(mMeeting));
+        assertEquals(1, filteredMeetingList.size());
     }
 
     @Test
     public void testFilterByDate() {
-
-        //todo creer un meeting et le filtrer par Date
+        Meeting mMeeting = mApiServcie.getMeeting().get(0);
+        List<Meeting> originalMeetingList = mApiServcie.getMeeting();
+        assertTrue(originalMeetingList.size() > 1);
+        List<Meeting> filteredMeetingList = mApiServcie.filterByDate(mMeeting.getDate());
+        assertTrue(filteredMeetingList.contains(mMeeting));
+        assertEquals(1, filteredMeetingList.size());
     }
 }

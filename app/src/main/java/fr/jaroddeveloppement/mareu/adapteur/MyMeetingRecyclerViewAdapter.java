@@ -11,14 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.event.DeleteEvent;
 import fr.jaroddeveloppement.mareu.model.Meeting;
-import fr.jaroddeveloppement.mareu.model.Room;
 import fr.jaroddeveloppement.mareu.model.Users;
-import fr.jaroddeveloppement.mareu.service.ApiService;
 
 public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyHolderMeeting> {
 

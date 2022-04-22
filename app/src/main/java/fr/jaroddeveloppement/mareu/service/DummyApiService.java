@@ -10,9 +10,9 @@ import fr.jaroddeveloppement.mareu.model.Users;
 public class DummyApiService implements ApiService {
 
 
-    private List<Users> user = DummyUtilisateurGenerator.dummyUsers;
-    private List<Room> listRooms = DummySalleGenerator.DUMMY_SALLE;
-    private List<Meeting> meetings = new ArrayList<>();
+    private List<Users> user = DummyUtilisateurGenerator.listUser();
+    private List<Room> listRooms = DummySalleGenerator.listSalle();
+    private List<Meeting> meetings = DummyMeetingTest.generateMeetings();
     private List<Meeting> meetingsFilterByDate = new ArrayList<>();
     private List<Meeting> roomMeeting = new ArrayList<>();
 

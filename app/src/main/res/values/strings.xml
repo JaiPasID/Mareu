@@ -10,4 +10,5 @@
     <string name="choisir_une_date">Choisir une date</string>
     <string name="sujet_du_meeting">Sujet du Meeting</string>
     <string name="valider">Valider</string>
+    <string name="veuillez_cr_er_un_meeting">Veuillez créer un meeting</string>
 </resources>

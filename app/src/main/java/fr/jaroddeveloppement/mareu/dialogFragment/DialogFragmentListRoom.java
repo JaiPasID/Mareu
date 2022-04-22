@@ -48,7 +48,7 @@ public class DialogFragmentListRoom extends DialogFragment {
 
         mRecyclerView.setAdapter(mMyRoomRecyclerViewAdapteur);
 
-        this.getDialog().setTitle("Liste des Room");
+
 
         return rootView;
     }

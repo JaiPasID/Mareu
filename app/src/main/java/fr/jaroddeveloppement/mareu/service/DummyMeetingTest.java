@@ -20,7 +20,5 @@ public class DummyMeetingTest {
         return new ArrayList<>(DUMMY_METING_TEST);
     }
 
-    public static List<Meeting> generateMeetings() {
-        return new ArrayList<>(DUMMY_METING_TEST);
-    }
+
 }

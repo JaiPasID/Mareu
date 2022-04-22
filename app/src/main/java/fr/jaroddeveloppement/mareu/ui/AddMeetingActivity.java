@@ -100,7 +100,6 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
 
 
 
-        // Meeting(Users users, Room room, String date, String startingTime, String meetingSubject)
         mValidation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,7 +158,6 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Room clickedRoom = (Room) parent.getItemAtPosition(position);
                 String clickedRoomName = clickedRoom.getNomDeLaSalle();
-                Toast.makeText(AddMeetingActivity.this, clickedRoomName + " selected", Toast.LENGTH_SHORT).show();
             }
 
             @Override

@@ -11,6 +11,7 @@ public abstract class DummySalleGenerator {
 
     public static List<Room> DUMMY_SALLE = Arrays.asList(
 
+            new Room(0,"Choisir une salle", android.R.color.white),
             new Room(1, "Petite Fleur", android.R.color.black),
             new Room(2, "Afk", android.R.color.holo_green_light),
             new Room(3, "Toujours au boulot", android.R.color.holo_red_light),

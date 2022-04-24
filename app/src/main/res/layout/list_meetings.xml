@@ -25,15 +25,32 @@
         android:layout_height="25dp"
         android:background="@drawable/circle"/>
 
+            <TextView
 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginStart="30dp"
+                android:text="Room Meeting :"
+                android:textStyle="bold"
+                android:textSize="10sp"/>
     <TextView
         android:id="@+id/NomDeLaSalle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="5dp"
         android:text="Nom de la salle"
-        android:textSize="15sp"/>
+        android:layout_marginEnd="15dp"
+        android:textSize="10sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Sujet du meeting :"
+               android:textStyle="bold"
+                android:textSize="10sp"/>
 
     <TextView
         android:id="@+id/subjectItemMeeting"
@@ -41,8 +58,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Sujet du meeting"
-        android:layout_marginStart="30dp"
-        android:textSize="15sp"/>
+        android:layout_marginStart="5dp"
+        android:textSize="10sp"/>
         </LinearLayout>
 
 
@@ -51,23 +68,40 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Heure meeting :"
+            android:textStyle="bold"
+            android:textSize="10sp" />
     <TextView
         android:id="@+id/HeureMeeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginStart="5dp"
         android:text="Heure meeting"
-        android:textSize="15sp" />
+        android:textSize="10sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginStart="15dp"
+            android:text="Date Meeting :"
+            android:textStyle="bold"
+            android:textSize="10sp" />
     <TextView
         android:id="@+id/DateMeeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="5dp"
         android:text="DateMeeting"
 
-        android:textSize="15sp" />
+        android:textSize="10sp" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -82,14 +116,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Liste des participants :"
+                android:textStyle="bold"
+                android:layout_marginStart="30dp"
+                android:textSize="10sp"/>
     <TextView
         android:id="@+id/particiapantMeeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Liste des participants"
-        android:layout_marginStart="30dp"
-        android:textSize="15sp"/>
+        android:layout_marginStart="5dp"
+        android:textSize="10sp"/>
         </LinearLayout>
 
 

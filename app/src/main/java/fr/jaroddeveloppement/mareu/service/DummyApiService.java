@@ -51,8 +51,8 @@ public class DummyApiService implements ApiService {
 
         for (int i = 0; i < meetings.size(); i++) {
             Meeting element = meetings.get(i);
-            if (meetings.get(i).getRoom().getNomDeLaSalle().equals(room.getNomDeLaSalle())) {
-                roomMeeting.add(meetings.get(i));
+            if (element.getRoom().getNomDeLaSalle().equals(room.getNomDeLaSalle())) {
+                roomMeeting.add(element);
             }
         }
 

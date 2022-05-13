@@ -22,6 +22,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.List;
 
@@ -37,6 +38,7 @@ import fr.jaroddeveloppement.mareu.model.Room;
 import fr.jaroddeveloppement.mareu.model.Users;
 import fr.jaroddeveloppement.mareu.service.ApiService;
 import fr.jaroddeveloppement.mareu.service.GetRoomFromDialogFragment;
+import fr.jaroddeveloppement.mareu.service.utility;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, GetRoomFromDialogFragment {
 
@@ -49,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     private List<Users> mUsers;
 
-    private String mDate;
 
     private FloatingActionButton mAddMeeting;
 
@@ -174,14 +175,19 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
+        String myDate = "";
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.YEAR, year);
         calendar.set(Calendar.MONTH, month);
         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-        String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
-
-        List<Meeting> meetingsFiltreByDate = apiService.filterByDate(currentDate);
+        String currentDate = DateFormat.getDateInstance(DateFormat.DEFAULT).format(calendar.getTime());
+        try {
+             myDate = utility.formatDate(currentDate);
+        } catch (ParseException pE) {
+            pE.printStackTrace();
+        }
+        List<Meeting> meetingsFiltreByDate = apiService.filterByDate(myDate);
         mRecyclerView.setAdapter(new MyMeetingRecyclerViewAdapter(meetingsFiltreByDate));
 
 

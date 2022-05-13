@@ -48,7 +48,7 @@ public class DummyApiService implements ApiService {
     @Override
     public List<Meeting> filterByRoom(Room room) {
 
-
+        roomMeeting.clear();
         for (int i = 0; i < meetings.size(); i++) {
             Meeting element = meetings.get(i);
             if (element.getRoom().getNomDeLaSalle().equals(room.getNomDeLaSalle())) {
@@ -61,7 +61,7 @@ public class DummyApiService implements ApiService {
 
     @Override
     public List<Meeting> filterByDate(String date) {
-
+        meetingsFilterByDate.clear();
         for (int i = 0; i < meetings.size(); ++i) {
             if (meetings.get(i).getDate().equals(date)) {
                 meetingsFilterByDate.add(meetings.get(i));

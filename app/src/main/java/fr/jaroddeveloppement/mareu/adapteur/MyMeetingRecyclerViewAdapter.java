@@ -10,12 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.text.ParseException;
 import java.util.List;
 
 import fr.jaroddeveloppement.mareu.R;
 import fr.jaroddeveloppement.mareu.event.DeleteEvent;
 import fr.jaroddeveloppement.mareu.model.Meeting;
 import fr.jaroddeveloppement.mareu.model.Users;
+import fr.jaroddeveloppement.mareu.service.utility;
 
 public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyHolderMeeting> {
 
@@ -40,12 +42,18 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyHolderM
 
     @Override
     public void onBindViewHolder(@NonNull MyHolderMeeting holder, int position) {
-
+        String mDate = "";
         Meeting meeting = mMeeting.get(position);
+
+        try {
+             mDate = utility.dateToDesplay(meeting.getDate());
+        } catch (ParseException pE) {
+            pE.printStackTrace();
+        }
         holder.mSujet.setText(meeting.getMeetingSubject());
         holder.mRoomName.setText(meeting.getRoom().getNomDeLaSalle());
         holder.mColorRoom.setBackgroundColor(meeting.getRoom().getColorRoom());
-        holder.mDateMeeting.setText(meeting.getDate());
+        holder.mDateMeeting.setText(mDate);
         holder.mHeureMeeting.setText(meeting.getTime());
         String emails = "";
         for(Users users : meeting.getUsers()) {

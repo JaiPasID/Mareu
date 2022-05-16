@@ -62,13 +62,13 @@ public class MeetingInstrumentedTest {
     private ActivityScenario mMainActivity;
     private ApiService mApiService;
     private List<Meeting> meetingList;
-    private static final int ITEM_COUNT = 0;
+    private static final int ITEM_COUNT = 2;
     private static final int MEETING_THE_2022_06_07 =1;
     private static final int MEETING_IN_ROOM = 1;
 
 
     @Rule
-    public ActivityScenarioRule rule = new ActivityScenarioRule<>(MainActivity.class);
+    public ActivityScenarioRule <MainActivity> rule = new ActivityScenarioRule(MainActivity.class);
 
     @Before
     public void setUp() {
@@ -129,19 +129,21 @@ public class MeetingInstrumentedTest {
     }
 
 
-    //@Test
+    @Test
+    public void VerifyMeeting(){
     //click on the menu button
-    //onView(withId(R.id.menu_meeting_list_activity))
-      //      .perform(click());
+    onView(withId(R.id.menu_meeting_list_activity))
+           .perform(click());
         //click on filtre salle
-    //onView(withText("Filtre Salle"))
-  //         .perform(click());
+    onView(withText("Filtre Salle"))
+          .perform(click());
     //click on salle 1
-    //onView(withText("Toujours au boulot"))
-      //      .perform(click());
+    onView(withText("Toujours au boulot"))
+            .perform(click());
     //Check the number of meetings
-    //onView(ViewMatchers.withId(R.id.recyclerViewMeeting))
-      //      .check(withItemCount(2));
+    onView(ViewMatchers.withId(R.id.recyclerViewMeeting))
+           .check(withItemCount(2));
+    }
     @Test
     public void SelectRoomAsFilter_ShouldShowOnlyMeetingInThisRoom() {
         onView(ViewMatchers.withId(R.id.recyclerViewMeeting))
@@ -178,6 +180,16 @@ public class MeetingInstrumentedTest {
         //check the number of meetings
         onView(ViewMatchers.withId(R.id.mainActivity))
                 .check(withItemCount(MEETING_THE_2022_06_07));
+    }
+
+    @Test
+    public void myReu_deleteAction_shouldRemoveItem() {
+
+        onView(ViewMatchers.withId(R.id.mainActivity)).check(matches(isDisplayed())).check(withItemCount(ITEM_COUNT));
+        // When perform a click on a delete icon
+        onView(ViewMatchers.withId(R.id.mainActivity)).perform(RecyclerViewActions.actionOnItemAtPosition(1,new DeleteViewAction()));
+
+        onView(ViewMatchers.withId(R.id.mainActivity)).check(matches(isDisplayed())).check(withItemCount(ITEM_COUNT-1));
     }
 
 }

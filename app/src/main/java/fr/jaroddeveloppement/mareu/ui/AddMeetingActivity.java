@@ -11,7 +11,6 @@ import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -35,7 +34,7 @@ import fr.jaroddeveloppement.mareu.model.Room;
 import fr.jaroddeveloppement.mareu.model.Users;
 import fr.jaroddeveloppement.mareu.service.ApiService;
 import fr.jaroddeveloppement.mareu.service.GetUsersFromSwitch;
-import fr.jaroddeveloppement.mareu.service.utility;
+import fr.jaroddeveloppement.mareu.service.Utility;
 
 public class AddMeetingActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener, GetUsersFromSwitch {
 
@@ -131,7 +130,7 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
 
         String currentDate = DateFormat.getDateInstance(DateFormat.DEFAULT).format(calendar.getTime());
         try {
-            myDate = utility.formatDate(currentDate);
+            myDate = Utility.formatDate(currentDate);
         } catch (ParseException pE) {
             pE.printStackTrace();
         }

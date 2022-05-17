@@ -38,7 +38,7 @@ import fr.jaroddeveloppement.mareu.model.Room;
 import fr.jaroddeveloppement.mareu.model.Users;
 import fr.jaroddeveloppement.mareu.service.ApiService;
 import fr.jaroddeveloppement.mareu.service.GetRoomFromDialogFragment;
-import fr.jaroddeveloppement.mareu.service.utility;
+import fr.jaroddeveloppement.mareu.service.Utility;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, GetRoomFromDialogFragment {
 
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         String currentDate = DateFormat.getDateInstance(DateFormat.DEFAULT).format(calendar.getTime());
         try {
-             myDate = utility.formatDate(currentDate);
+             myDate = Utility.formatDate(currentDate);
         } catch (ParseException pE) {
             pE.printStackTrace();
         }

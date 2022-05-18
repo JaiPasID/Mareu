@@ -100,6 +100,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         mAddMeeting = findViewById(R.id.buttonAddMeeting);
 
 
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
         apiService = DI.getApiService();
 
         init();
@@ -140,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onDeleteMeeting(DeleteEvent event) {
 
         apiService.removeMetting(event.meeting);
+        initList();
 
     }
 
@@ -154,8 +158,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void initList() {
 
         mMeeting = apiService.getMeeting();
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
 
         mRecyclerView.setAdapter(new MyMeetingRecyclerViewAdapter(mMeeting));
 

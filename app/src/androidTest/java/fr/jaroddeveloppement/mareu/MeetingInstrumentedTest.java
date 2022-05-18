@@ -54,19 +54,23 @@ public class MeetingInstrumentedTest {
     private ActivityScenario mMainActivity;
     private ApiService mApiService;
     private List<Meeting> meetingList;
-    private static final int ITEM_COUNT = 2;
-    private static final int MEETING_THE_2022_06_07 =1;
+    private static final int ITEM_COUNT = 3;
+    private static final int MEETING_THE_2022_06_07 = 0;
     private static final int MEETING_IN_ROOM = 1;
 
 
+
+
     @Rule
-    public ActivityScenarioRule rule = new ActivityScenarioRule(MainActivity.class);
+    public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
+            new ActivityScenarioRule<>(MainActivity.class);
+
 
     @Before
     public void setUp() {
 
 
-        mMainActivity = rule.getScenario();
+        mMainActivity = mActivityScenarioRule.getScenario();
         assertThat(mMainActivity, notNullValue());
         mApiService = DI.getNewInstanceApiService();
         meetingList = mApiService.getMeeting();
@@ -83,17 +87,8 @@ public class MeetingInstrumentedTest {
         //check add meeting layout is displayed
         onView(ViewMatchers.withId(R.id.CreationMeeting))
                 .check(matches(isDisplayed()));
-        //fill the data
-        //fill the topic
-        onView(ViewMatchers.withId(R.id.sujetMeeting))
-                .perform(typeText("Test meeting"))
-                .perform(closeSoftKeyboard());
-        //click on the spinner to see rooms
-        onView(withId(R.id.chooseRoom))
-                .perform(click());
-        //click on "salle 1"
-        onData(allOf(is(instanceOf(String.class)), is("Toujours au boulot")))
-                .perform(click());
+
+
 
         //set the Date picker
         onView(withId(R.id.buttonDate))
@@ -102,6 +97,21 @@ public class MeetingInstrumentedTest {
         //set the Time picker
         onView(withId(R.id.buttonTime))
                 .perform(PickerActions.setTime(9, 15));
+        //fill the data
+        //fill the topic
+
+        //click on the spinner to see rooms
+        onView(withId(R.id.chooseRoom))
+                .perform(click());
+        //click on "salle 1"
+        onData(allOf(is(instanceOf(String.class)), is("Afk")))
+                .perform(click());
+
+
+        onView(ViewMatchers.withId(R.id.sujetMeeting))
+                .perform(typeText("Test meeting"))
+                .perform(closeSoftKeyboard());
+
 
         //set the duration
         onView(ViewMatchers.withId(R.id.SetTime))
@@ -117,8 +127,6 @@ public class MeetingInstrumentedTest {
         onView(ViewMatchers.withId(R.id.recyclerViewMeeting))
                 .check(matches(isDisplayed()))
                 .check(withItemCount(ITEM_COUNT + 1));
-
-
 
 
     }

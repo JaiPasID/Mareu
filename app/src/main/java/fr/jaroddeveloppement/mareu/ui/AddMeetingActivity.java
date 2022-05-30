@@ -125,7 +125,7 @@ public class AddMeetingActivity extends AppCompatActivity implements DatePickerD
         String myDate = "";
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.YEAR, year);
-        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.MONTH+1, month);
         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
         String currentDate = DateFormat.getDateInstance(DateFormat.DEFAULT).format(calendar.getTime());

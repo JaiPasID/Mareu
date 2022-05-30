@@ -16,6 +16,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 
 import android.widget.DatePicker;
+import android.widget.TimePicker;
 
 import androidx.test.core.app.ActivityScenario;
 
@@ -45,7 +46,9 @@ import java.util.List;
 
 import fr.jaroddeveloppement.mareu.di.DI;
 import fr.jaroddeveloppement.mareu.model.Meeting;
+import fr.jaroddeveloppement.mareu.model.Room;
 import fr.jaroddeveloppement.mareu.service.ApiService;
+import fr.jaroddeveloppement.mareu.service.DummySalleGenerator;
 import fr.jaroddeveloppement.mareu.ui.MainActivity;
 
 @RunWith(AndroidJUnit4.class)
@@ -55,7 +58,7 @@ public class MeetingInstrumentedTest {
     private ApiService mApiService;
     private List<Meeting> meetingList;
     private static final int ITEM_COUNT = 3;
-    private static final int MEETING_THE_2022_06_07 = 0;
+    private static final int MEETING_THE_2022_06_07 = 1;
     private static final int MEETING_IN_ROOM = 1;
 
 
@@ -77,10 +80,10 @@ public class MeetingInstrumentedTest {
 
     }
 
+
     @Test
     public void ClickOnSaveButtonInAddMeetingActivity_ShouldAddOneMeetingInMaReuActivity() {
-        onView(ViewMatchers.withId(R.id.recyclerViewMeeting))
-                .check(matches(isDisplayed()));
+
         //click on add meeting button
         onView(withId(R.id.buttonAddMeeting))
                 .perform(click());
@@ -88,34 +91,28 @@ public class MeetingInstrumentedTest {
         onView(ViewMatchers.withId(R.id.CreationMeeting))
                 .check(matches(isDisplayed()));
 
-
-
-        //set the Date picker
-        onView(withId(R.id.buttonDate))
-                .perform(PickerActions.setDate(2022, 06, 07));
-
-        //set the Time picker
-        onView(withId(R.id.buttonTime))
-                .perform(PickerActions.setTime(9, 15));
         //fill the data
         //fill the topic
+        onView(ViewMatchers.withId(R.id.sujetMeeting))
+                .perform(typeText("Test meeting"))
+                .perform(closeSoftKeyboard());
 
         //click on the spinner to see rooms
         onView(withId(R.id.chooseRoom))
                 .perform(click());
         //click on "salle 1"
-        onData(allOf(is(instanceOf(String.class)), is("Afk")))
+        onData(allOf(is(instanceOf(Room.class)), is(DummySalleGenerator.DUMMY_SALLE.get(0))))
                 .perform(click());
+        onView(withId(R.id.buttonDate)).perform(click());
+        onView(isAssignableFrom(DatePicker.class)).perform(PickerActions.setDate(2022,5,23));
+        onView(withText("OK")).perform(click());
 
-
-        onView(ViewMatchers.withId(R.id.sujetMeeting))
-                .perform(typeText("Test meeting"))
-                .perform(closeSoftKeyboard());
-
+        onView(withId(R.id.buttonTime)).perform(click());
+        onView(isAssignableFrom(TimePicker.class)).perform(PickerActions.setTime(7,30));
+        onView(withText("OK")).perform(click());
 
         //set the duration
         onView(ViewMatchers.withId(R.id.SetTime))
-
                 .perform(typeText("2"))
                 .perform(closeSoftKeyboard());
 
@@ -126,10 +123,10 @@ public class MeetingInstrumentedTest {
         //Meeting list should be displayed with one additional item
         onView(ViewMatchers.withId(R.id.recyclerViewMeeting))
                 .check(matches(isDisplayed()))
-                .check(withItemCount(ITEM_COUNT + 1));
-
-
+                .check(withItemCount(ITEM_COUNT));
     }
+
+
 
 
     @Test
@@ -151,7 +148,7 @@ public class MeetingInstrumentedTest {
 
     @Test
     public void SelectDateAsFilter_ShouldShowOnlyMeetingAtThisDate() {
-        onView(ViewMatchers.withId(R.id.recyclerViewMeeting))
+        onView(ViewMatchers.withId(R.id.mainActivity))
                 .check(matches(isDisplayed()));
         //click on the menu button
         onView(withId(R.id.menu_meeting_list_activity))
@@ -169,6 +166,8 @@ public class MeetingInstrumentedTest {
                 .check(withItemCount(MEETING_THE_2022_06_07));
     }
 
+
+
     @Test
     public void myReu_deleteAction_shouldRemoveItem() {
 
@@ -178,5 +177,6 @@ public class MeetingInstrumentedTest {
 
         onView(ViewMatchers.withId(R.id.recyclerViewMeeting)).check(matches(isDisplayed())).check(withItemCount(ITEM_COUNT-1));
     }
+
 
 }

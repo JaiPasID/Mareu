@@ -1,11 +1,13 @@
 package fr.jaroddeveloppement.mareu.adapteur;
 
 
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -52,7 +54,9 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyHolderM
         }
         holder.mSujet.setText(meeting.getMeetingSubject());
         holder.mRoomName.setText(meeting.getRoom().getNomDeLaSalle());
-        holder.mColorRoom.setBackgroundColor(meeting.getRoom().getColorRoom());
+        holder.mColorRoom.setBackgroundResource(R.drawable.circle);
+        GradientDrawable drawable = (GradientDrawable) holder.mColorRoom.getBackground();
+        drawable.setColor(ContextCompat.getColor(holder.mColorRoom.getContext(), meeting.getRoom().getColorRoom()));
         holder.mDateMeeting.setText(mDate);
         holder.mHeureMeeting.setText(meeting.getTime());
         String emails = "";

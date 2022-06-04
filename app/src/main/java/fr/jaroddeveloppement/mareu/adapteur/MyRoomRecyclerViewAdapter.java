@@ -44,6 +44,7 @@ public class MyRoomRecyclerViewAdapter extends RecyclerView.Adapter<MyHolderRoom
         holder.mListRoom.setText(room.getNomDeLaSalle());
         holder.mRoomColor.setBackgroundColor(room.getColorRoom());
 
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
